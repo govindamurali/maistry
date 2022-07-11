@@ -22,11 +22,9 @@ type dummyLogger struct {
 }
 
 func (d dummyLogger) Error(message string, err error, args map[string]interface{}) {
-	//TODO implement me
 }
 
 func (d dummyLogger) Trace(message string, args map[string]interface{}) {
-	//TODO implement me
 }
 
 func TestDispatcher_Start(t *testing.T) {
