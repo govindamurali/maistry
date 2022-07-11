@@ -12,7 +12,7 @@ Maistry is a Golang implementation of Worker Pool. Effective when you have limit
 * **Dispatcher** - Dispatches the jobs to the workers. Takes in **maxWorkers** as the input, and a logger interface with standard Error and Info.
 
 
-## How to use
+## Usage
 
 #### 1. Create dispatcher with workerCount count and start it
 ```
