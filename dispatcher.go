@@ -25,7 +25,7 @@ func NewDispatcher(maxWorkers int, extLogger ILogger) *Dispatcher {
 	}
 }
 
-//This Will Add a job manager to the list
+// AddJobManager Will Add a job manager to the list
 func (d *Dispatcher) AddJobManager(jm *JobManager) {
 	d.Lock()
 	defer d.Unlock()

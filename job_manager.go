@@ -37,12 +37,12 @@ func (jm *JobManager) Run() {
 	}()
 }
 
-// A blocking call to JobManager
+// PushJob - blocking call to JobManager
 func (jm *JobManager) PushJob(j Job) {
 	jm.jobChan <- j
 }
 
-//jps (Jobs per second) - JobManager will throttle job execution according if it crosses maxJps
+// NewJobManager - jps (Jobs per second) - JobManager will throttle job execution according if it crosses maxJps
 func NewJobManager(maxJps int, name string) *JobManager {
 
 	throttler := time.Tick(time.Duration(int(1000/maxJps)) * time.Millisecond)

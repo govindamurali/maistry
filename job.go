@@ -21,7 +21,7 @@ func NewJob(do func(), extLogger ILogger) Job {
 func (j *Job) Do() {
 	defer func() {
 		if r := recover(); r != nil {
-			j.logger.Error("Job", errors.New("Panic occured in a Job"), map[string]interface{}{"recover_type": r})
+			j.logger.Error("Job", errors.New("panic occured in a Job"), map[string]interface{}{"recover_type": r})
 		}
 	}()
 

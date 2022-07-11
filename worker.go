@@ -2,7 +2,6 @@ package maistry
 
 // Worker represents the worker that executes the job
 type Worker struct {
-	//TODO use JobChan
 	WorkerPool chan jobChannel
 	JobChannel jobChannel
 	quit       chan bool
@@ -20,12 +19,12 @@ func (w *Worker) Start() {
 			select {
 			case job := <-w.JobChannel:
 
-				w.logger.Trace("Bulk Processor |Worker |Starting Job", nil)
+				w.logger.Trace("maistry |Worker |Starting Job", nil)
 				// we have received a work request.
 
 				job.Do()
 
-				w.logger.Trace("Bulk Processor |Worker |Finished Job", nil)
+				w.logger.Trace("maistry |Worker |Finished Job", nil)
 
 			case <-w.quit:
 				// we have received a signal to stop
