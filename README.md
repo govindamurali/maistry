@@ -16,29 +16,34 @@ Maistry is a Golang implementation of Worker Pool. Effective when you have limit
 
 #### 1. Create dispatcher with workerCount count and start it
 ```
-dispatcher := maistry.NewDispatcher(workerCount, logger)
-dispatcher.Start() 
+	dispatcher := maistry.NewDispatcher(workerCount, logger)
+	dispatcher.Start() 
 ```
 
 #### 2. Create Job Managers
 ```
-jm1:= maistry.NewJobManager(jps1, "manager 1")
-jm2:= maistry.NewJobManager(jps2, "manager 2")
+	jm1:= maistry.NewJobManager(jps1, "manager 1")
+	jm2:= maistry.NewJobManager(jps2, "manager 2")
 ```
 
 #### 3. Run the job managers
 ```
-jm1.Run()
-jm2.Run()
+	jm1.Run()
+	jm2.Run()
 ```
 
-#### 4. Create and push the jobs the job manager
+#### 4. Create and push the jobs to the job manager
 ```
-job1:= maistry.GetJob(func(){//your function here}, logger)
-jm1.PushJob(job1)
+	job1 := maistry.NewJob(
+		func() {
+			//your function here 
+		}, logger)
+	jm1.PushJob(job1)
 
-job2:= maistry.GetJob(func(){//your other function here}, logger)
-jm2.PushJob(job2)
+	job2 := maistry.NewJob(func() {
+			//your other function here
+		}, logger)
+	jm2.PushJob(job2)
 
 ```
 
