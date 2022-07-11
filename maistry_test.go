@@ -18,10 +18,18 @@ type TestClient struct {
 var count1 int
 var count2 int
 
-var dummyLogger maistry.ILogger
+type dummyLogger struct {
+}
+
+func (d dummyLogger) Error(message string, err error, args map[string]interface{}) {
+	//TODO implement me
+}
+
+func (d dummyLogger) Trace(message string, args map[string]interface{}) {
+	//TODO implement me
+}
 
 func TestDispatcher_Start(t *testing.T) {
-	t.Skip()
 
 	clients := []TestClient{
 
@@ -41,7 +49,7 @@ func TestDispatcher_Start(t *testing.T) {
 		},
 	}
 
-	dispatcher := maistry.NewDispatcher(1, dummyLogger)
+	dispatcher := maistry.NewDispatcher(1, dummyLogger{})
 
 	for _, c := range clients {
 		dispatcher.AddJobManager(c.jobManager)
@@ -74,7 +82,7 @@ func SendData(c TestClient) {
 				if c.name == "2" {
 					count2++
 				}
-			}, dummyLogger))
+			}, dummyLogger{}))
 		}
 	}()
 
